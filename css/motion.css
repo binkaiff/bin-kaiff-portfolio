@@ -1,0 +1,52 @@
+/* Motion and responsive refinements. Loaded after style.css. */
+.hero-copy,.portrait-wrap,.skill-card,.project-card,.education-card,.contact-grid>div{min-width:0}
+.hero .eyebrow{display:flex;align-items:center;gap:12px;line-height:1.7;letter-spacing:.12em}
+.hero .dot{flex:0 0 9px;width:9px;height:9px;margin:0;border-radius:50%;background:#285c3d;animation:status-breathe 2.8s ease-in-out infinite}
+@keyframes status-breathe{0%,100%{background:#285c3d;box-shadow:0 0 0 0 #77984400}50%{background:#a8c96d;box-shadow:0 0 0 5px #77984418}}
+.portrait-wrap{animation:portrait-float 2s ease-in-out infinite;transform-origin:50% 60%;margin-block:8px}
+@keyframes portrait-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(.25deg)}}
+.portrait{height:auto;aspect-ratio:auto;object-fit:contain}
+.portrait-top{padding:8px 8px 16px;line-height:1.6}
+.portrait-caption{padding:18px 8px 8px;gap:12px;flex-wrap:wrap}
+
+
+.motion-background .portrait-wrap,.motion-background .hero .dot,.hero-offscreen .portrait-wrap,.hero-offscreen .hero .dot{animation-play-state:paused}
+@media(hover:hover) and (pointer:fine){.button span,.text-link span,.skill-card a span{display:inline-block;transition:transform .2s ease}.button:hover span,.text-link:hover span{transform:translate(2px,-2px)}.project-card:focus-within{border-color:#97ac83;box-shadow:0 10px 24px #173f3610}}
+@media(max-width:1000px) and (min-width:761px){.hero{gap:30px;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.hero h1{font-size:clamp(36px,4.7vw,48px)}.nav-links{gap:15px}.skills-grid{gap:14px}.skill-card{padding:20px}.skill-card h3{font-size:22px}.footer-connect{flex-direction:column;align-items:flex-start}}
+@media(max-width:760px){.hero{padding-top:30px;gap:28px}.hero h1{font-size:clamp(32px,8.6vw,60px);line-height:1.14}.hero .eyebrow{font-size:10px;letter-spacing:.1em;gap:10px}.hero-intro{font-size:16px}.portrait-wrap{width:100%;max-width:400px;animation-name:portrait-float-mobile}.portrait-top{font-size:10px}.portrait-caption strong{font-size:23px}.portrait-caption div span{font-size:12px}.form-group input,.form-group textarea{font-size:16px}.nav-links{max-height:calc(100dvh - 74px);overflow-y:auto;overscroll-behavior:contain}.button,.project-tabs a,.text-link{min-height:44px}.project-tabs{row-gap:8px}.project-tabs a{display:inline-flex;align-items:center}.page-intro h1{font-size:clamp(32px,8.8vw,43px);overflow-wrap:break-word}.section-heading h2{overflow-wrap:break-word}.footer-social{min-width:0}.footer-nav a{display:inline-flex;align-items:center;min-height:44px}.project-actions{gap:12px 24px}}
+@media(max-width:380px){.container{width:calc(100% - 28px)}.actions{gap:10px}.actions .button{padding:12px 17px;font-size:13px}.contact-email{font-size:17px}.hero-note{font-size:9px}.footer-social{padding:10px;gap:7px;font-size:12px}.social-arrow{margin-left:auto}.portrait-mark{font-size:28px}.project-body{padding:20px}.skill-card{padding:22px}}
+@keyframes portrait-float-mobile{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){.portrait-wrap,.hero .dot{animation:none!important;transform:none!important}.button span,.text-link span{transition:none}}
+@media print{.portrait-wrap,.hero .dot{animation:none;transform:none}}
+/* Section navigation and page progress. */
+.reading-progress{position:fixed;inset:0 auto auto 0;width:100%;height:3px;background:#7d9e4c;transform:scaleX(0);transform-origin:left;z-index:110;pointer-events:none}
+.nav-links>a{position:relative}.nav-links>a:not(.nav-contact)::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;border-radius:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.nav-links>a.section-active:not(.nav-contact)::after{transform:scaleX(1)}
+.nav-links>.nav-contact.section-active{box-shadow:0 0 0 3px var(--paper),0 0 0 5px #7d9e4c}
+html.restoring-position{scroll-behavior:auto!important}
+@media(hover:hover) and (pointer:fine){.project-card .project-image img{transition:transform .35s ease}.project-card:hover .project-image img{transform:scale(1.045)}.project-actions a span{display:inline-block;transition:transform .2s ease}.project-actions a:hover span{transform:translate(3px,-3px)}}
+@media(max-width:760px){.nav-links>a:not(.nav-contact)::after{left:12px;right:auto;width:30px;bottom:5px}.nav-links>a.section-active:not(.nav-contact){color:var(--green);font-weight:700}}
+@media(prefers-reduced-motion:reduce){.project-card:hover .project-image img,.project-actions a:hover span{transform:none}.nav-links>a::after{transition:none}}
+@media print{.reading-progress{display:none}}
+/* Mobile menu entrance/exit. Hidden links cannot receive keyboard focus. */
+@media(max-width:760px){
+ .nav-links{display:flex;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease,visibility 0s linear .22s}
+ .nav-links.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);transition:opacity .22s ease,transform .22s ease,visibility 0s}
+ .menu-toggle span{display:inline-block;transition:transform .22s ease}
+ .menu-toggle[aria-expanded="true"] span{transform:rotate(90deg)}
+}
+/* Small press feedback, with no effect on layout or scroll position. */
+.button,.menu-toggle,.contact-form button,.footer-social,.project-tabs a,.project-actions a{transition:transform .14s ease,background-color .2s ease,box-shadow .2s ease}
+.button:active,.menu-toggle:active,.contact-form button:not(:disabled):active,.footer-social:active,.project-tabs a:active,.project-actions a:active{transform:scale(.97)}
+/* Form focus, validation and honest submission feedback. */
+.form-group input,.form-group textarea{transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease}
+.form-group input:focus,.form-group textarea:focus{border-color:#dcebaf;background:#ffffff0f;box-shadow:0 0 0 3px #dcebaf20}
+.form-group [aria-invalid="true"]{border-color:#ffc8bb;box-shadow:0 0 0 2px #ffc8bb25}
+.contact-form button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:165px;min-height:46px}
+.contact-form button.is-sending{opacity:1;cursor:wait;background:#d4dfb4}
+.contact-form button.is-sending::before{content:"";width:15px;height:15px;border:2px solid #173f3638;border-top-color:var(--green);border-radius:50%;animation:send-spin .8s linear infinite}
+@keyframes send-spin{to{transform:rotate(360deg)}}
+#form-status[data-state]{padding:13px 15px;border-radius:10px;border:1px solid #ffffff35;line-height:1.6;text-align:left;color:#fff}
+#form-status[data-state="success"]{color:#ecf5d5;background:#dcebaf10;border-color:#c4d79a}
+#form-status[data-state="error"]{color:#ffe7e1;background:#ffb9a810;border-color:#e7afa0}
+@media(prefers-reduced-motion:reduce){.nav-links,.menu-toggle span,.button,.footer-social,.contact-form button,.project-tabs a,.project-actions a{transition:none!important}.menu-toggle[aria-expanded="true"] span,.button:active,.menu-toggle:active,.contact-form button:active,.footer-social:active,.project-tabs a:active,.project-actions a:active{transform:none}.contact-form button.is-sending::before{animation:none}}
