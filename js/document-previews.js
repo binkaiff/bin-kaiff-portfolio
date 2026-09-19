@@ -3,7 +3,10 @@ window.portfolioDocumentPreviews = {
     "images/document-previews/codveda-letter-1.webp",
     "images/document-previews/codveda-letter-2.webp"
   ],
-  "documents/nkmotors_letter.pdf": [
+  "documents/UTA.pdf": [
+    "images/document-previews/uta-letter-1.webp"
+  ],  
+  "documents/NK.pdf": [
     "images/document-previews/nkmotors-letter-1.webp",
     "images/document-previews/nkmotors-letter-2.webp"
   ],
