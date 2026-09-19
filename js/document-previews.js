@@ -4,7 +4,8 @@ window.portfolioDocumentPreviews = {
     "images/document-previews/codveda-letter-2.webp"
   ],
   "documents/nkmotors_letter.pdf": [
-    "images/document-previews/nkmotors-letter-1.webp"
+    "images/document-previews/nkmotors-letter-1.webp",
+    "images/document-previews/nkmotors-letter-2.webp"
   ],
   "certificates/NILS Certificate.pdf": [
     "images/document-previews/nils-certificate-1.webp",
