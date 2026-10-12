@@ -71,3 +71,13 @@ main{transition:opacity .16s ease,transform .16s ease}
 
 /* Separate credentials section, with the same card styling as Education. */
 .certifications-section { padding-top: 0; }
+
+/* v2: gentle, accessible quality-of-life improvements */
+@media (max-width: 760px) {
+  .nav-links.open { max-height: min(75vh, 610px); overflow-y: auto; overscroll-behavior: contain; }
+  .project-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

@@ -11,16 +11,11 @@
   } catch (_) { /* Storage can be unavailable when opening local HTML. */ }
   if (firstVisit && !motion.matches) root.classList.add('is-loading');
   const finishIntro = () => root.classList.remove('is-loading');
-  // Four-second first-visit intro, with the hero decoded before reveal.
-  // A failed/slow image must never block navigation indefinitely.
-  const safety = setTimeout(finishIntro, 8000);
-  const ready = async () => {
-    const photo = document.querySelector('.portrait');
-    if (photo && typeof photo.decode === 'function') {
-      try { await photo.decode(); } catch (_) { /* Reveal normally on error. */ }
-    }
+  // Keep the introduction brief: never hold the interface hostage to image loading.
+  const safety = setTimeout(finishIntro, 2200);
+  const ready = () => {
     const remaining = firstVisit && !motion.matches
-      ? Math.max(0, 4000 - (performance.now() - started)) : 0;
+      ? Math.max(0, 1100 - (performance.now() - started)) : 0;
     setTimeout(() => { finishIntro(); clearTimeout(safety); }, remaining);
   };
   if (document.readyState === 'loading') {
